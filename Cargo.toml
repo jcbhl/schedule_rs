@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 reqwest = "0.10.4"
 tokio = { version = "0.2.22", features = ["full"] }
+json = "0.12.4"
