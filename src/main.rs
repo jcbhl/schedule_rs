@@ -1,7 +1,7 @@
 // ['subject', 'catalog_number', 'class_section', 'class_number', 'class_title', 'class_topic_formal_desc', 'instructor', 'enrollment_capacity', 'meeting_days', 'meeting_time_start', 'meeting_time_end', 'term', 'term_desc']
 use json;
 #[tokio::main]
-async fn main() -> Result<(), reqwest::Error> {
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Fetching class data...");
     let url = "https://api.devhub.virginia.edu/v1/courses";
     let response: String = reqwest::get(url).await?.text().await?;
@@ -17,7 +17,7 @@ async fn main() -> Result<(), reqwest::Error> {
         print!("{}\t", header);
     }
 
-    let data = data.filter(|arr| arr[0] == "CS" && arr[arr.len()-1]=="2021 Spring"); // Filtering takes, but we can shadow to keep variable the same.
+    let data = data.filter(|arr| arr[0] == "CS"); // Filtering takes, but we can shadow to keep variable the same.
     for row in data {
         println!("{}", row);
     }
