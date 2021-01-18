@@ -1,5 +1,6 @@
 // ['subject', 'catalog_number', 'class_section', 'class_number', 'class_title', 'class_topic_formal_desc', 'instructor', 'enrollment_capacity', 'meeting_days', 'meeting_time_start', 'meeting_time_end', 'term', 'term_desc']
-use json;
+mod class;
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Fetching class data...");
@@ -16,10 +17,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     for header in columns {
         print!("{}\t", header);
     }
+    println!();
 
     let data = data.filter(|arr| arr[0] == "CS"); // Filtering takes, but we can shadow to keep variable the same.
+    let mut class_vec: Vec<class::Class> = Vec::new();
     for row in data {
-        println!("{}", row);
+        let current_class = class::Class::build_from_json(row);
+        class_vec.push(current_class);
+    }
+    for course in &class_vec[0..10]{
+        println!("{:?}\n", course);
     }
     println!("Done.");
 
