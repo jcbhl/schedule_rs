@@ -2,7 +2,7 @@
 pub struct Class {
     subject: String,
     catalog_number: u32,
-    class_section: u32,
+    class_section: String,
     class_number: u32,
     class_title: String,
     class_topic_formal_desc: String,
@@ -18,7 +18,7 @@ impl Class {
         Self {
             subject: String::from(val[0].as_str().unwrap()),
             catalog_number: val[1].as_str().unwrap().parse::<u32>().unwrap(),
-            class_section: val[2].as_str().unwrap().parse::<u32>().unwrap(),
+            class_section: String::from(val[2].as_str().unwrap()),
             class_number: val[3].as_u32().unwrap(),
             class_title: String::from(val[4].as_str().unwrap()),
             class_topic_formal_desc: String::from(val[5].as_str().unwrap()),

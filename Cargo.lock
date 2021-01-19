@@ -741,6 +741,7 @@ name = "schedule_rs"
 version = "0.1.0"
 dependencies = [
  "json",
+ "rand",
  "reqwest",
  "tokio",
 ]
