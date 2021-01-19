@@ -1,17 +1,18 @@
 #[derive(Debug)]
 pub struct Class {
-    subject: String,
-    catalog_number: u32,
-    class_section: String,
-    class_number: u32,
-    class_title: String,
-    class_topic_formal_desc: String,
-    instructor: String,
-    enrollment_capacity: u32,
-    schedule: Schedule,
-    term: String,
-    term_desc: String,
+    pub subject: String,
+    pub catalog_number: u32,
+    pub class_section: String,
+    pub class_number: u32,
+    pub class_title: String,
+    pub class_topic_formal_desc: String,
+    pub instructor: String,
+    pub enrollment_capacity: u32,
+    pub schedule: Schedule,
+    pub term: String,
+    pub term_desc: String,
 }
+//TODO implement format for nice printing
 impl Class {
     //Take json value by reference and instantiate fields
     pub fn build_from_json(val: &json::JsonValue) -> Self {
@@ -37,9 +38,9 @@ impl Class {
 
 #[derive(Debug)]
 pub struct Schedule {
-    meeting_days: String,
-    meeting_time_start: String,
-    meeting_time_end: String,
+    pub meeting_days: String,
+    pub meeting_time_start: String,
+    pub meeting_time_end: String,
 }
 impl Schedule {
     pub fn new(meeting_days: &str, meeting_time_start: &str, meeting_time_end: &str) -> Self {
