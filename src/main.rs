@@ -10,6 +10,7 @@ struct Command{
     // class_type: ClassTypes,
 }
 async fn request_and_parse() -> Result<json::JsonValue, Box<dyn std::error::Error>> {
+    //Todo actually handle error if we cannot make a request to the API 
     let url = "https://api.devhub.virginia.edu/v1/courses";
     let response: String = reqwest::get(url).await?.text().await?;
     let parsed = json::parse(&response)?;
