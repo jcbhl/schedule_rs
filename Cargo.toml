@@ -11,3 +11,4 @@ reqwest = "0.10.4"
 tokio = { version = "0.2.22", features = ["full"] }
 json = "0.12.4"
 structopt = "0.3.13"
+# tui = "0.14.0"
