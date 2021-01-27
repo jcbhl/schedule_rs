@@ -42,11 +42,23 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     //     println!("{:?}", matched_class);
     // }
     loop{
+        let test_vec = vec!["asdf".to_string(),"not found".to_string(), "asdf123".to_string()];
         let mut input = String::new();
-        match io::stdin().read_line(&mut input){
-            Ok(_) => println!("Hello {}", &input),
-            Err(error) => println!("Error {}", error),
+        io::stdin().read_line(&mut input).expect("Error in reading from stdio");
+        let input = input.trim_end(); // read_line() brings in the newline with it 
+        let mut matches: Vec<String> = vec![];
+        for test_str in test_vec{
+            if test_str.contains(&input.to_lowercase()){
+                matches.push(test_str.to_string());
+            }
         }
+        // let matches: Vec<String> = test_vec.iter()
+        //     .cloned()
+        //     .filter(|val| val.contains(&input.to_lowercase()))
+        //     .collect()
+        // ;
+        println!("Len: {}", matches.len());
+        println!("Matches: {:?}", matches);
     }
     Ok(())
 }
